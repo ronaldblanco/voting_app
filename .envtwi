@@ -1,0 +1,5 @@
+TWITTER_KEY=d3KBAug71bQf6T6041hJO4hKY
+TWITTER_SECRET=TbrQIm67o3ziPsfbL6mkYZMbeBN1JSR4nikbusfefwI6fDtRbB
+MONGO_URI=mongodb://localhost:27017/clementinejs
+PORT=8080
+APP_URL=https://voting-app-pnaldblanco.c9users.io/
