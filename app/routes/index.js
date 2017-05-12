@@ -3,6 +3,9 @@
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 
+//var headHtml = '';
+//var footHtml = '';
+
 module.exports = function (app, passport) {
 
 	function isLoggedIn (req, res, next) {

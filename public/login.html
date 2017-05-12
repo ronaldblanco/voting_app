@@ -3,25 +3,45 @@
 <html>
 
 	<head>
-		<title>Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.</title>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script> 
+    $(function(){
+      $("#includedHead").load("/public/head.html"); 
+    });
+    </script> 
+    <script> 
+    $(function(){
+      $("#includedLogo").load("/public/logo.html"); 
+    });
+    </script> 
+    <script> 
+    $(function(){
+      $("#includedFoot").load("/public/foot.html"); 
+    });
+    </script> 
+    <div id="includedHead"></div>
 		
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
 		<div class="container">	
 			<div class="login">
-				<img src="/public/img/clementine_150.png" />
-				<br />
-				<p class="clementine-text">Clementine.js</p>
+				
+				<div id="includedLogo"></div>
+				
 				<a href="/auth/twitter">
 					<div class="btn" id="login-btn">
-						<img src="/public/img/github_32px.png" alt="github logo" />
+						<img src="/public/img/twitter_32.png" alt="github logo" />
 						<p>LOGIN WITH TWITTER</p>
 					</div>
 				</a>
 			</div>
 		</div>
+		
+		<center>
+			<div id="includedFoot"></div>
+		</center>
+		
 	</body>
 
 </html>

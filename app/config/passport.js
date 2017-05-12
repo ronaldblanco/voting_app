@@ -33,7 +33,7 @@ module.exports = function (passport) {
 					return done(null, user);
 				} else {
 					var newUser = new User();
-					console.log(profile);
+					//console.log(profile);
 					newUser.twitter.id = md5Hex(profile.id);
 					newUser.twitter.username = profile.username;
 					newUser.twitter.displayName = profile.displayName;
