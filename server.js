@@ -6,6 +6,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 
+var bodyparser = require('simple-bodyparser');
+
 var app = express();
 require('dotenv').load();
 require('./app/config/passport')(passport);
@@ -25,6 +27,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(bodyparser());
 
 routes(app, passport);
 

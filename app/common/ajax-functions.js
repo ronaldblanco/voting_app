@@ -23,6 +23,7 @@ var ajaxFunctions = {
       };
 
       xmlhttp.open(method, url, true);
+      //console.log(xmlhttp);
       xmlhttp.send();
    }
 };
