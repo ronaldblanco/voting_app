@@ -9,7 +9,7 @@ var Users = require('../models/users.js');
 //var Poll = require('../models/polls.js');
 
 
-function ClickHandler () {
+function PollHandler () {
 
 	this.getPolls = function (req, res) {
 		Users
@@ -18,29 +18,31 @@ function ClickHandler () {
 				if (err) { throw err; }
 				console.log(result);
 				//result.polls.push("hola");
-				res.json(result);//Array
+				res.json(result.polls);//Array
 			});
 	};
 
 	this.addPoll = function (req, res) {
 		
-		var myPoll = new Poll;
+		/*var myPoll = new Poll;
 		myPoll.name = 'hola';
-		myPoll.opt.push('yea');
+		myPoll.opt.push('yea');*/
 		
 		Users
-			.findOneAndUpdate({ 'twitter.id': req.user.twitter.id }, { 'polls': myPoll  })
+			.findOneAndUpdate({ 'twitter.id': req.user.twitter.id }, { 'polls': [{ name: 'hola', options:[{nameopt:'opt1',vote:1}]}]  })
 			.exec(function (err, result) {
 					if (err) { throw err; }
 
-					res.json(result.nbrClicks);
+					res.json(result.polls);
 				}
 			);
 			/*Users.findById({ 'twitter.id': req.user.twitter.id }, function (err, User) {
-  // handle errors ..
-  User.polls.push({ name: 'hola', options:Array });
-  post.save(callback);
-})*/
+  if (err) { throw err; }
+  console.log(req);
+  User.polls.push({ name: 'hola', options:[{nameopt:'opt1',vote:1}]});
+  User.save(function(){});
+  res.json(User.polls);
+});*/
 	};
 
 	this.resetPolls = function (req, res) {
@@ -56,4 +58,4 @@ function ClickHandler () {
 
 }
 
-module.exports = ClickHandler;
+module.exports = PollHandler;

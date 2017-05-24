@@ -7,7 +7,7 @@ var PollHandler = require(path + '/app/controllers/pollHandler.server.js');
 //var headHtml = '';
 //var footHtml = '';
 
-module.exports = function (app, passport) {
+module.exports = function (app, passport, db) {
 
 	function isLoggedIn (req, res, next) {
 		if (req.isAuthenticated()) {
@@ -18,6 +18,7 @@ module.exports = function (app, passport) {
 	}
 
 	var clickHandler = new ClickHandler();
+	var pollHandler = new PollHandler();
 
 	app.route('/')
 		.get(isLoggedIn, function (req, res) {
@@ -60,12 +61,12 @@ module.exports = function (app, passport) {
 		.delete(isLoggedIn, clickHandler.resetClicks);
 		
 	app.route('/api/:id/polls')
-		.get(isLoggedIn, clickHandler.getClicks);
+		.get(isLoggedIn, pollHandler.getPolls);
 		
 	app.route('/api/:id/polls/add/*')
-		.post(isLoggedIn, clickHandler.addClick);
+		.post(isLoggedIn, pollHandler.addPoll);
 
 	app.route('/api/:id/polls/del/*')
-		.delete(isLoggedIn, clickHandler.resetClicks);
+		.delete(isLoggedIn, pollHandler.resetPolls);
 		
 };

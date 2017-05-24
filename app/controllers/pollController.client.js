@@ -19,11 +19,12 @@ Additionally, it will specify what action should be taken when one of the two bu
    //FUNCTIONS
    function updatePoll (data) {
       //var pollObject = JSON.parse(data);
-      var pollArray = data;
+      //var pollArray = Array.parse(data);
       pollList.innerHTML = '';
-      for(var a = 0; a < pollArray.length; a++){
-         pollList.innerHTML = pollList.innerHTML +'<li>'+pollArray[a]+'</li>';
-      }
+      //for(var a = 0; a < pollArray.length; a++){
+         //pollList.innerHTML = pollList.innerHTML +'<li>'+pollArray[a]+'</li>';
+         pollList.innerHTML = '<li>'+data+'</li>';
+      //}
       
    }
 
@@ -31,7 +32,7 @@ Additionally, it will specify what action should be taken when one of the two bu
    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, updatePoll));
 
    //LISTENERS
-   addButton.addEventListener('poll', function () {
+   addButton.addEventListener('click', function () {
 
       ajaxFunctions.ajaxRequest('POST', apiUrl+'/add/'+poll, function () {
          ajaxFunctions.ajaxRequest('GET', apiUrl, updatePoll);
@@ -39,7 +40,7 @@ Additionally, it will specify what action should be taken when one of the two bu
 
    }, false);
 
-   deleteButton.addEventListener('poll', function () {
+   deleteButton.addEventListener('click', function () {
 
       ajaxFunctions.ajaxRequest('DELETE', apiUrl, function () {
          ajaxFunctions.ajaxRequest('GET', apiUrl, updatePoll);

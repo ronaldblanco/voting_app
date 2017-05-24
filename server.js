@@ -3,6 +3,7 @@
 var express = require('express');
 var routes = require('./app/routes/index.js');
 var mongoose = require('mongoose');
+var mongo = require('mongodb').MongoClient;
 var passport = require('passport');
 var session = require('express-session');
 
@@ -30,9 +31,15 @@ app.use(passport.session());
 
 app.use(bodyparser());
 
-routes(app, passport);
+mongo.connect(process.env.MONGO_URI, function (err, db){
+	if(err == null) routes(app, passport, db);
+	else console.log(err);
+
+//routes(app, passport);
 
 var port = process.env.PORT || 5000 || 8080;
 app.listen(port,  function () {
 	console.log('Voting App listening on port ' + port + '...');
+});
+
 });

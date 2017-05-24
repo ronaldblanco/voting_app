@@ -19,7 +19,7 @@ var User = new Schema({
       photo: String
 	},
 	//polls: [Poll],
-	polls: Array,
+	polls: [{name:String, opt:[{nameopt:String, vote: Number}]}],
    nbrClicks: {
       clicks: Number
    }
